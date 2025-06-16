@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Replace the existing dark-toggle button with this -->
+    <div class="theme-toggle">
+      <div class="toggle-container">
+        <input type="radio" id="light-mode" name="theme" value="light" checked>
+        <label for="light-mode">
+          <i class="fas fa-sun"></i>
+          <span>Light</span>
+        </label>
+        
+        <input type="radio" id="dark-mode" name="theme" value="dark">
+        <label for="dark-mode">
+          <i class="fas fa-moon"></i>
+          <span>Dark</span>
+        </label>
+      </div>
+    </div>
+    
+    <div id="app">
+      <!-- Login Section -->
+      <div class="card" id="login-section">
+        <h2><i class="fas fa-user-circle"></i> Welcome Back</h2>
+        <p class="subtitle">Sign in to your account</p>
+        <form id="auth-form">
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Password" required />
+          </div>
+          <div class="auth-actions">
+            <button type="submit" id="login-btn" class="btn-primary">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            <button type="button" id="register-btn" class="btn-secondary">
+              <i class="fas fa-user-plus"></i> Register
+            </button>
+          </div>
+        </form>
+        <p id="auth-message"></p>
+      </div>
+
+      <!-- Admin Dashboard -->
+      <div class="card" id="admin-dashboard" style="display: none">
+        <div class="header">
+          <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+          <button id="logout-btn" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+
+        <section>
+          <h3><i class="fas fa-users"></i> Registered Users</h3>
+          <ul id="user-list"></ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-plus-circle"></i> Add New Project</h3>
+          <form id="project-form">
+            <div class="input-group">
+              <i class="fas fa-project-diagram"></i>
+              <input type="text" id="project-name" placeholder="Project Name" required />
+            </div>
+            <div class="input-group">
+              <i class="fas fa-align-left"></i>
+              <textarea id="project-desc" placeholder="Project Description" required></textarea>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="date" id="project-end" required />
+            </div>
+            <button type="submit" class="btn-success">
+              <i class="fas fa-plus"></i> Create Project
+            </button>
+          </form>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-user-tag"></i> Assign Project</h3>
+          <form id="assign-form">
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <select id="user-select">
+                <option>Select User</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-folder"></i>
+              <select id="project-select">
+                <option>Select Project</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-warning">
+              <i class="fas fa-arrow-right"></i> Assign Project
+            </button>
+          </form>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-trash-alt"></i> Delete Project</h3>
+          <div class="input-group">
+            <i class="fas fa-folder-minus"></i>
+            <select id="delete-project-select">
+              <option>Select Project to Delete</option>
+            </select>
+          </div>
+          <button id="delete-btn" class="btn-danger">
+            <i class="fas fa-trash"></i> Delete Project
+          </button>
+        </section>
+      </div>
+
+      <!-- User Dashboard -->
+      <div class="card" id="user-dashboard" style="display: none">
+        <div class="header">
+          <h2><i class="fas fa-user-circle"></i> My Dashboard</h2>
+          <button id="logout-btn-user" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+        
+        <div id="assigned-project"></div>
+        <div id="update-section" style="display: none">
+          <button id="complete-project" class="btn-success">
+            <i class="fas fa-check-circle"></i> Mark as Completed
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
